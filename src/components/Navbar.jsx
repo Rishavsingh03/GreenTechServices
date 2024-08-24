@@ -123,11 +123,14 @@ const Navbar = () => {
                     About Us
                   </Link>
                 </li>
+                { role && role==="Vendor" ?(
                 <li className="nav-item">
                   <Link to="/priceList" className="nav-link">
+                 
                     Price List
                   </Link>
                 </li>
+):null}
                 {role && role === "Customer" ? (
                   <li className="nav-item">
                     <Link to="/mybooking" className="nav-link">
@@ -137,7 +140,7 @@ const Navbar = () => {
                 ) : (
                   <></>
                 )}
-                {role && role === "Customer" ? (
+                {!role || role === "Customer" ? (
                   <li className="nav-item">
                     <Link to="/predict-prices" className="nav-link">
                       Get Price
