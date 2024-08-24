@@ -85,15 +85,39 @@ const Pickups = () => {
     }
   };
 
+  const pageStyle = {
+    minHeight: "100vh",
+    background: "linear-gradient(135deg, #6366F1, #3B82F6, #2DD4BF)",
+    color: "white",
+    padding: "50px 20px",
+  };
+
+  const cardStyle = {
+    background: "rgba(255,255,255,0.2)",
+    backdropFilter: "blur(10px)",
+    borderRadius: "15px",
+    padding: "30px",
+    marginBottom: "30px",
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      style={{ padding: "20px" }}
+      style={pageStyle}
     >
       <Container>
-        <h2 style={{ marginBottom: "20px" }}>Pickups</h2>
+        <motion.h2
+          className="text-center mb-4"
+          initial={{ y: -20 }}
+          animate={{ y: 0 }}
+          transition={{ delay: 0.2 }}
+          style={{ color: "white" }}
+        >
+          Pickups
+        </motion.h2>
         <Row>
           {bookings.map((booking) => (
             <Col
@@ -103,29 +127,37 @@ const Pickups = () => {
               lg={4}
               style={{ marginBottom: "20px" }}
             >
-              <Card>
-                <Card.Body>
-                  <Card.Title>{booking.user.name}</Card.Title>
-                  <Card.Text>
-                    <strong>Date:</strong> {booking.bookingDate}
-                    <br />
-                    <strong>Contact:</strong> {booking.user.contact}
-                    <br />
-                    <strong>Address:</strong> {booking.address}
-                    <br />
-                    <strong>Booking Pending:</strong>{" "}
-                    {booking.bookingPending ? "Yes" : "No"}
-                  </Card.Text>
-                  {booking.bookingPending && (
-                    <Button
-                      variant="success"
-                      onClick={() => handleStatusChange(booking.id)}
-                    >
-                      Mark as Completed
-                    </Button>
-                  )}
-                </Card.Body>
-              </Card>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <Card style={cardStyle}>
+                  <Card.Body>
+                    <Card.Title className="text-center" style={{ color: "white", fontWeight: "700" }}>
+                      {booking.user.name}
+                    </Card.Title>
+                    <Card.Text>
+                      <strong>Date:</strong> {booking.bookingDate}
+                      <br />
+                      <strong>Contact:</strong> {booking.user.contact}
+                      <br />
+                      <strong>Address:</strong> {booking.address}
+                      <br />
+                      <strong>Booking Pending:</strong>{" "}
+                      {booking.bookingPending ? "Yes" : "No"}
+                    </Card.Text>
+                    {booking.bookingPending && (
+                      <Button
+                        variant="success"
+                        onClick={() => handleStatusChange(booking.id)}
+                      >
+                        Mark as Completed
+                      </Button>
+                    )}
+                  </Card.Body>
+                </Card>
+              </motion.div>
             </Col>
           ))}
         </Row>
