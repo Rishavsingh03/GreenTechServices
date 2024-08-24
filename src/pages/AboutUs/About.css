@@ -1,0 +1,61 @@
+/* src/components/AboutUs.css */
+
+.about-us-container {
+    background-color: #ffffff;
+    /* White background for the page */
+    color: #333;
+    /* Dark text color for readability */
+    background-image: url('./aboutimage.jpg');
+    /* Path to the background image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.intro-section {
+    background-color: rgba(4, 39, 73, 0.8);
+    /* Dark blue background with opacity for readability */
+    color: white;
+}
+
+.intro-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.intro-section p {
+    font-size: 1.25rem;
+}
+
+.content-section h2 {
+    font-size: 2rem;
+    color: #042749;
+}
+
+.content-section p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.e-waste-impact,
+.e-waste-challenges,
+.e-waste-success {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.e-waste-impact h3,
+.e-waste-challenges h3,
+.e-waste-success h3 {
+    font-size: 1.5rem;
+}
+
+.e-waste-impact p,
+.e-waste-challenges p,
+.e-waste-success p {
+    font-size: 1rem;
+    color: #333;
+}
