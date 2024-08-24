@@ -1,0 +1,111 @@
+/* src/components/Login.css */
+
+.login-container {
+    background-color: #ffffff;
+    /* White background for the whole page */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+}
+
+.login-box {
+    background-color: #042749;
+    /* Dark blue background for the login box */
+    color: white;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    /* Increased width for a larger login box */
+}
+
+.login-box h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.login-box .form-control {
+    background-color: #ffffff;
+    /* White background for input fields */
+    color: #333;
+    /* Dark text for better readability */
+    border: 1px solid #ccc;
+    /* Light border for inputs */
+    border-radius: 5px;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.login-box .form-control:focus {
+    border-color: #042749;
+    /* Dark blue border on focus */
+    box-shadow: 0 0 5px rgba(4, 39, 73, 0.5);
+}
+
+.login-box .form-control::placeholder {
+    color: #666;
+    /* Slightly darker placeholder text */
+}
+
+.login-box .btn-primary {
+    background-color: #ffffff;
+    /* White background for the button */
+    border: 1px solid #042749;
+    /* Dark blue border for the button */
+    color: #042749;
+    /* Dark blue text color */
+    border-radius: 5px;
+    padding: 12px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.login-box .btn-primary:hover {
+    background-color: #f0f0f0;
+    /* Light gray background on hover */
+    color: #042749;
+    /* Dark blue text color on hover */
+    border-color: #042749;
+    /* Dark blue border on hover */
+    transform: translateY(-3px);
+    box-shadow: 0px 4px 15px rgba(4, 39, 73, 0.4);
+}
+
+.login-box .btn-primary:active {
+    transform: translateY(1px);
+    box-shadow: none;
+}
+
+.login-box label {
+    font-size: 14px;
+    color: white;
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 500;
+}
+
+.login-box .forgot-password {
+    text-align: right;
+    display: block;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    color: #f36c3d;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.login-box .forgot-password:hover {
+    color: #042749;
+    text-decoration: underline;
+    text:white;
+}
