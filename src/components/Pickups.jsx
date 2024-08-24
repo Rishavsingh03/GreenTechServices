@@ -67,29 +67,41 @@ const Pickups = () => {
 
   return (
     <div className="container mt-4">
-      <h2 className="text-center mb-4">My Pickups</h2>
-      {bookings.length > 0 ? (
-        bookings.map((booking) => (
-          <div key={booking.id} className="card mb-3">
-            <div className="card-body">
-              <h5 className="card-title">Booking for {booking.address} on {booking.bookingDate}</h5>
-              <p className="card-text"><strong>Customer Name:</strong> {booking.user.name}</p>
-              <p className="card-text"><strong>Customer Phone:</strong> {booking.user.contact}</p>
-              <p className="card-text"><strong>Status:</strong> {booking.pending ? 'Pending' : 'Done'}</p>
-              {booking.pending && (
-                <button
-                  className="btn btn-primary"
-                  onClick={() => handleStatusChange(booking.id)}
-                >
-                  Mark as Done
-                </button>
-              )}
+      <h2 className="text-center mb-4 text-primary" style={{ color: "#0d6efd" }}>My Pickups</h2>
+      <div className="row">
+        {bookings.length > 0 ? (
+          bookings.map((booking) => (
+            <div key={booking.id} className="col-md-6">
+              <div className="card mb-4 shadow" style={{ borderRadius: "15px", borderColor: "#0d6efd" }}>
+                <div className="card-body">
+                  <h5 className="card-title text-center font-weight-bold" style={{ color: "#0d6efd", fontWeight: "700" }}>
+                    Booking for {booking.address} on {booking.bookingDate}
+                  </h5>
+                  <p className="card-text">
+                    <strong>Customer Name:</strong> {booking.user.name}
+                  </p>
+                  <p className="card-text">
+                    <strong>Customer Phone:</strong> {booking.user.contact}
+                  </p>
+                  <p className="card-text">
+                    <strong>Status:</strong> {booking.pending ? 'Pending' : 'Done'}
+                  </p>
+                  {booking.pending && (
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => handleStatusChange(booking.id)}
+                    >
+                      Mark as Done
+                    </button>
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
-        ))
-      ) : (
-        <p>No pending bookings found.</p>
-      )}
+          ))
+        ) : (
+          <p className="text-center">No pending bookings found.</p>
+        )}
+      </div>
     </div>
   );
 };

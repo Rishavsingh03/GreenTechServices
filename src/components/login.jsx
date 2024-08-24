@@ -24,7 +24,7 @@ const Login = () => {
         <h2 className="text-center mb-4">Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group mb-3">
-            <label>Email address</label>
+            <label className="text-light">Email address</label>
             <input
               type="email"
               className="form-control"
@@ -34,7 +34,7 @@ const Login = () => {
             />
           </div>
           <div className="form-group mb-4">
-            <label>Password</label>
+            <label className="text-light">Password</label>
             <input
               type="password"
               className="form-control"

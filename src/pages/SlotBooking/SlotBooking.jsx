@@ -7,7 +7,7 @@ import { db } from '/src/firebase'; // Import your Firebase config
 import { collection, query, where, getDocs, addDoc } from 'firebase/firestore';
 
 const SlotBooking = () => {
-  const { user } = useSelector((state) => state.auth);
+  const { user,role } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const [vendor, setVendor] = useState(null);
 
@@ -15,6 +15,10 @@ const SlotBooking = () => {
     if (!user) {
       toast.error("You need to login");
       navigate("/login");
+    }
+    if(role==='Vendor'){
+      toast.error("Not a customer");
+      navigate('/login');
     }
   }, [user, navigate]);
 
