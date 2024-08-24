@@ -130,6 +130,13 @@ const Navbar = () => {
                   </Link>
                 </li>:<></>
                 }
+                {
+                  role && role==='Vendor'?<li className="nav-item">
+                  <Link to="/pickups" className="nav-link">
+                      My Pickups
+                  </Link>
+                </li>:<></>
+                }
               </ul>
               {user ? (
                 <div className="d-flex align-items-center">
