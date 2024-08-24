@@ -1,0 +1,33 @@
+/* Navbar.css */
+
+/* Custom Button Styles */
+.custom-button {
+    color: black;
+    border-color: black;
+    background-color: white;
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.custom-button:hover {
+    color: white;
+    background-color: #042749;
+    border-color: darkorange;
+}
+
+/* Navbar Background */
+.navbar {
+    background-color: blueviolet;
+}
+
+/* Navbar Link Styles */
+.nav-link {
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #042749;
+    /* Dark black color on hover */
+    text-decoration: none;
+    /* Remove underline on hover */
+}
