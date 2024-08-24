@@ -1,20 +1,26 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './UserForm.css'; // Import the CSS file
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { db } from '/src/firebase'; // Import your Firebase config
+import { collection, query, where, getDocs, addDoc } from 'firebase/firestore';
+
 const SlotBooking = () => {
-  const { user, role, loading, error } = useSelector((state) => state.auth);
-  const navigate=useNavigate();
+  const { user } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  const [vendor, setVendor] = useState(null);
+
   useEffect(() => {
     if (!user) {
       toast.error("You need to login");
       navigate("/login");
     }
   }, [user, navigate]);
+
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
+    name: user?.displayName || '',
+    email: user?.email || '',
     contact: '',
     address: '',
     date: ''
@@ -28,9 +34,54 @@ const SlotBooking = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form Data:', formData);
+    const { address, name, email, contact, date } = formData;
+
+    try {
+      // Query Firestore to find a vendor by address
+      const vendorQuery = query(collection(db, 'vendors'), where('locality', '==', address));
+      const vendorSnapshot = await getDocs(vendorQuery);
+
+      if (vendorSnapshot.empty) {
+        toast.error("No vendor available for this address");
+        return;
+      }
+
+      console.log("Vendors details",vendorSnapshot);
+
+      // If a vendor is found, take the first one (or handle as needed)
+      const vendorData = vendorSnapshot.docs[0].data();
+      setVendor(vendorData);
+
+      console.log("Vendors",vendor);
+
+      // Display the vendor details to the user
+      toast.success(`Vendor found: ${vendorData.vendorName}, License Number: ${vendorData.licenseNumber}`);
+       
+      setTimeout(() => {
+        document.getElementById('vendor-info').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 500);
+      // Create a booking entry in Firestore
+      await addDoc(collection(db, 'slotBookings'), {
+        user: {
+          name,
+          email,
+          contact
+        },
+        vendor: {
+          name: vendorData.vendorName,
+          licenseNumber: vendorData.licenseNumber,
+        },
+        bookingDate: date,
+        address
+      });
+
+      toast.success('Slot booked successfully!');
+    } catch (error) {
+      console.error('Error booking slot:', error);
+      toast.error('Failed to book slot. Please try again.');
+    }
   };
 
   return (
@@ -45,7 +96,7 @@ const SlotBooking = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            required
+            disabled
             className="form-input"
             placeholder=" write your name"
           />
@@ -59,9 +110,9 @@ const SlotBooking = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            required
+            disabled
             className="form-input"
-            placeholder=' write your email'
+            placeholder=" write your email"
           />
         </div>
 
@@ -75,7 +126,7 @@ const SlotBooking = () => {
             onChange={handleChange}
             required
             className="form-input"
-            placeholder=' contact details'
+            placeholder=" contact details"
           />
         </div>
 
@@ -108,6 +159,14 @@ const SlotBooking = () => {
 
         <button type="submit" className="form-submit-btn">Submit</button>
       </form>
+
+      {vendor && (
+        <div id="vendor-info" className="vendor-info text-center mt-5 p-4 border rounded bg-light">
+          <h3 className="mb-3">Vendor Information</h3>
+          <p><strong>Name:</strong> {vendor.vendorName}</p>
+          <p><strong>License Number:</strong> {vendor.licenseNumber}</p>
+        </div>
+      )}
     </div>
   );
 };
