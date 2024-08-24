@@ -9,13 +9,14 @@ import {
 } from "firebase/firestore";
 import { app } from "/src/firebase"; // Your Firebase configuration file
 import "/src/components/MyBooking.css"; // Custom styles for the page
+import { useNavigate } from "react-router-dom";
 
 const db = getFirestore(app);
 
 const MyBooking = () => {
   const { user, role } = useSelector((state) => state.auth);
   const [bookings, setBookings] = useState([]);
-
+  const navigate=useNavigate();
   useEffect(() => {
     const fetchBookings = async () => {
       try {
@@ -38,6 +39,10 @@ const MyBooking = () => {
         console.error("Error fetching bookings: ", error);
       }
     };
+
+    if(role===null){
+        navigate('/login');
+    }
 
     fetchBookings();
   }, [user, role]);

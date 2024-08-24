@@ -123,6 +123,13 @@ const Navbar = () => {
                     Price List
                   </Link>
                 </li>
+                {
+                  role && role==='Customer'?<li className="nav-item">
+                  <Link to="/mybooking" className="nav-link">
+                      My Bookings
+                  </Link>
+                </li>:<></>
+                }
               </ul>
               {user ? (
                 <div className="d-flex align-items-center">
