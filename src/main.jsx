@@ -16,6 +16,7 @@ import Pickups from './components/pickups.jsx'
 import { RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import ReactDOM from 'react-dom/client'
 import PriceList from './pages/PriceList/PricesList.jsx'
+import Predict from './pages/PredictPrice/Predict.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,8 +31,9 @@ const router = createBrowserRouter(
       <Route path="/signup" element={<Signup />} />
       <Route path="/about" element={<About />} />
       <Route path="/getLicence" element={<GetLicence />} />
-      <Route path="/priceList" element={<PriceList/>}/>
-      <Route path="/pickups" element={<Pickups/>}/>
+      <Route path="/priceList" element={<PriceList />} />
+      <Route path="/pickups" element={<Pickups />} />
+      <Route path="/predict-prices" element={<Predict />} />
     </Route>
   )
 );

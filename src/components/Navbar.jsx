@@ -75,9 +75,9 @@ const Navbar = () => {
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
           <div className="container-fluid">
             <Link to="">
-            <a className="navbar-brand" href="#">
-              GreenTechServices
-            </a>
+              <a className="navbar-brand" href="#">
+                GreenTechServices
+              </a>
             </Link>
             <button
               className="navbar-toggler"
@@ -90,29 +90,34 @@ const Navbar = () => {
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <div
+              className="collapse navbar-collapse"
+              id="navbarSupportedContent"
+            >
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <Link to="">
-                <li className="nav-item">
-                  <a className="nav-link" aria-current="page" href="#">
-                    Home
-                  </a>
-                </li>
+                  <li className="nav-item">
+                    <a className="nav-link" aria-current="page" href="#">
+                      Home
+                    </a>
+                  </li>
                 </Link>
-                {role && role === 'Vendor' ? (
+                {role && role === "Vendor" ? (
                   <li className="nav-item">
                     <Link to="/getLicence" className="nav-link">
                       GetLicence
                     </Link>
                   </li>
                 ) : null}
-                {
-                  !role || role==='Customer'?<li className="nav-item">
-                  <Link to="/slotbooking" className="nav-link">
-                    Book Up
-                  </Link>
-                </li>:<></>
-                }
+                {!role || role === "Customer" ? (
+                  <li className="nav-item">
+                    <Link to="/slotbooking" className="nav-link">
+                      Book Up
+                    </Link>
+                  </li>
+                ) : (
+                  <></>
+                )}
                 <li className="nav-item">
                   <Link to="/about" className="nav-link">
                     About Us
@@ -123,24 +128,39 @@ const Navbar = () => {
                     Price List
                   </Link>
                 </li>
-                {
-                  role && role==='Customer'?<li className="nav-item">
-                  <Link to="/mybooking" className="nav-link">
+                {role && role === "Customer" ? (
+                  <li className="nav-item">
+                    <Link to="/mybooking" className="nav-link">
                       My Bookings
-                  </Link>
-                </li>:<></>
-                }
-                {
-                  role && role==='Vendor'?<li className="nav-item">
-                  <Link to="/pickups" className="nav-link">
+                    </Link>
+                  </li>
+                ) : (
+                  <></>
+                )}
+                {role && role === "Customer" ? (
+                  <li className="nav-item">
+                    <Link to="/predict-prices" className="nav-link">
+                      Get Price
+                    </Link>
+                  </li>
+                ) : (
+                  <></>
+                )}
+                {role && role === "Vendor" ? (
+                  <li className="nav-item">
+                    <Link to="/pickups" className="nav-link">
                       My Pickups
-                  </Link>
-                </li>:<></>
-                }
+                    </Link>
+                  </li>
+                ) : (
+                  <></>
+                )}
               </ul>
               {user ? (
                 <div className="d-flex align-items-center">
-                  <span className="navbar-text me-2">Welcome, {user.displayName}</span>
+                  <span className="navbar-text me-2">
+                    Welcome, {user.displayName}
+                  </span>
                   <button className="btn custom-button" onClick={handleLogout}>
                     Log Out
                   </button>
