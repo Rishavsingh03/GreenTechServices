@@ -12,7 +12,7 @@ import Login from './components/login.jsx'
 import Signup from './components/signup.jsx'
 import GetLicence from './components/GetLicence.jsx'
 import MyBooking from "./components/MyBooking";
-import Pickups from './components/pickups.jsx'
+import Mypickups from './components/Mypickups.jsx' 
 import { RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import ReactDOM from 'react-dom/client'
 import PriceList from './pages/PriceList/PricesList.jsx'
@@ -32,7 +32,7 @@ const router = createBrowserRouter(
       <Route path="/about" element={<About />} />
       <Route path="/getLicence" element={<GetLicence />} />
       <Route path="/priceList" element={<PriceList />} />
-      <Route path="/pickups" element={<Pickups />} />
+      <Route path="/Mypickups" element={<Pickups />} />
       <Route path="/predict-prices" element={<Predict />} />
     </Route>
   )
