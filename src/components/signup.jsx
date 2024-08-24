@@ -30,7 +30,7 @@ const Signup = () => {
         <h2 className="text-center mb-4">Register</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group mb-3">
-            <label>Name</label>
+            <label className="text-light">Name</label>
             <input
               type="text"
               className="form-control"
@@ -40,7 +40,7 @@ const Signup = () => {
             />
           </div>
           <div className="form-group mb-3">
-            <label>Email address</label>
+            <label className="text-light">Email address</label>
             <input
               type="email"
               className="form-control"
@@ -50,7 +50,7 @@ const Signup = () => {
             />
           </div>
           <div className="form-group mb-4">
-            <label>Password</label>
+            <label className="text-light">Password</label>
             <input
               type="password"
               className="form-control"
@@ -60,7 +60,7 @@ const Signup = () => {
             />
           </div>
           <div className="form-group mb-4">
-            <label>Confirm Password</label>
+            <label className="text-light">Confirm Password</label>
             <input
               type="password"
               className="form-control"
@@ -70,7 +70,7 @@ const Signup = () => {
             />
           </div>
           <div className="form-group mb-4">
-            <label>Role</label>
+            <label className="text-light">Role</label>
             <select
               className="form-control"
               value={role}
