@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { motion } from 'framer-motion';
+import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 
 const PredictPrices = () => {
   const [brand, setBrand] = useState("");
@@ -30,33 +32,31 @@ const PredictPrices = () => {
       );
 
       let temp = response.data["Predicted Price (INR)"] / 10;
-      if(type==='mouse' || type==='Mouse'){
-        temp=temp/80;
+      if (type.toLowerCase() === 'mouse') {
+        temp = temp / 80;
       }
-      if (type === "motherboard" || type === "Motherboard") {
-        temp=temp/130;
+      if (type.toLowerCase() === 'motherboard') {
+        temp = temp / 130;
       }
-      if(type==='Lights' || type==='lights'){
-        temp=temp/110;
+      if (type.toLowerCase() === 'lights') {
+        temp = temp / 110;
       }
-      if(temp==='Pendrive' || temp==='pendrive'){
-        temp=temp/130;
+      if (type.toLowerCase() === 'pendrive') {
+        temp = temp / 130;
       }
-      if(damage==='not working'){
-        if(temp>1000){
-          temp=temp/2;
-        }
-        else{
+      if (damage === 'not working') {
+        if (temp > 1000) {
+          temp = temp / 2;
+        } else {
           temp = temp - 40;
         }
-        
       }
-      if(damage==='physical damage'){
-       if (temp > 1000) {
-         temp = temp / 3;
-       } else {
-         temp = temp - 50;
-       }
+      if (damage === 'physical damage') {
+        if (temp > 1000) {
+          temp = temp / 3;
+        } else {
+          temp = temp - 50;
+        }
       }
       setPredictedPrice(temp);
     } catch (error) {
@@ -64,60 +64,140 @@ const PredictPrices = () => {
     }
   };
 
+  const pageStyle = {
+    minHeight: '100vh',
+    background: 'linear-gradient(135deg, #6366F1, #3B82F6, #2DD4BF)',
+    color: 'white',
+    padding: '50px 20px',
+  };
+
+  const cardStyle = {
+    background: 'rgba(255,255,255,0.2)',
+    backdropFilter: 'blur(10px)',
+    borderRadius: '15px',
+    padding: '30px',
+    marginBottom: '30px',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+  };
+
   return (
-    <div className="container">
-      <h2>Predict E-Waste Price</h2>
-      <form onSubmit={handlePredict}>
-        <div className="form-group">
-          <label>Brand</label>
-          <input
-            type="text"
-            className="form-control"
-            value={brand}
-            onChange={(e) => setBrand(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Type</label>
-          <input
-            type="text"
-            className="form-control"
-            value={type}
-            onChange={(e) => setType(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Year of Purchase</label>
-          <input
-            type="number"
-            className="form-control"
-            value={yearOfPurchase}
-            onChange={(e) => setYearOfPurchase(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Damage</label>
-          <input
-            type="text"
-            className="form-control"
-            value={damage}
-            onChange={(e) => setDamage(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Predict Price
-        </button>
-      </form>
-      {predictedPrice && (
-        <div className="mt-4">
-          <h3>Predicted Price: {predictedPrice} INR</h3>
-        </div>
-      )}
-    </div>
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      style={pageStyle}
+    >
+      <Container>
+        <Row className="justify-content-center">
+          <Col md={8}>
+            <motion.div
+              initial={{ y: 50 }}
+              animate={{ y: 0 }}
+              transition={{ type: 'spring', stiffness: 100 }}
+              style={cardStyle}
+            >
+              <motion.h2 
+                className="text-center mb-4"
+                initial={{ y: -20 }}
+                animate={{ y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                Predict E-Waste Price
+              </motion.h2>
+              <Form onSubmit={handlePredict}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <Form.Group className="mb-3" controlId="formBrand">
+                    <Form.Label>Brand</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter brand"
+                      value={brand}
+                      onChange={(e) => setBrand(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <Form.Group className="mb-3" controlId="formType">
+                    <Form.Label>Type</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter type"
+                      value={type}
+                      onChange={(e) => setType(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  <Form.Group className="mb-3" controlId="formYearOfPurchase">
+                    <Form.Label>Year of Purchase</Form.Label>
+                    <Form.Control
+                      type="number"
+                      placeholder="Enter year of purchase"
+                      value={yearOfPurchase}
+                      onChange={(e) => setYearOfPurchase(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                >
+                  <Form.Group className="mb-3" controlId="formDamage">
+                    <Form.Label>Damage</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter damage description"
+                      value={damage}
+                      onChange={(e) => setDamage(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.7 }}
+                >
+                  <Button variant="light" type="submit" className="w-100">
+                    Predict Price
+                  </Button>
+                </motion.div>
+              </Form>
+              {predictedPrice && (
+                <motion.div 
+                  className="mt-4 text-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  <h3>Predicted Price: {predictedPrice.toFixed(2)} INR</h3>
+                </motion.div>
+              )}
+            </motion.div>
+          </Col>
+        </Row>
+      </Container>
+    </motion.div>
   );
 };
 
