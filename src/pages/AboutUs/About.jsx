@@ -1,4 +1,3 @@
-// src/components/AboutUs.js
 import React from "react";
 import "./About.css";
 
@@ -6,118 +5,98 @@ const About = () => {
   return (
     <div className="about-us-container">
       <section className="intro-section text-center py-5">
-        <h1>About Us</h1>
+        <h1 className="heading">About Us</h1>
         <p className="lead">
-          Learn more about our mission, team, and the impact we aim to create.
+          We're on a mission to tackle the growing e-waste crisis in India through a sustainable and transparent platform that connects customers with licensed vendors.
         </p>
       </section>
 
       <section className="content-section py-5">
         <div className="container">
-          <h2 className="mt-5 mb-4">Our Story</h2>
+          {/* Our Story Section */}
+          <h2 className="mt-5 mb-4 section-heading">Our Story</h2>
           <p>
-            Our journey began with a simple idea: to make a positive impact on
-            the world. Through hard work and a shared vision, we've grown into a
-            leader in our industry.
+            Our journey began with a vision to revolutionize e-waste management in India. With over 3.2 million metric tons of e-waste generated annually, the improper handling of electronic waste poses severe environmental and health risks. Our platform was created to address these issues by connecting customers with licensed vendors, ensuring that e-waste is recycled responsibly.
           </p>
 
-          <h2 className="mt-5 mb-4">Our Leadership Team</h2>
-          <p>
-            Our leadership team comprises experienced professionals who are
-            passionate about making a difference and leading our company to new
-            heights.
-          </p>
-
-          <h2 className="mt-5 mb-4">Diversity & Inclusion</h2>
-          <p>
-            We believe that a diverse and inclusive workplace is the key to
-            success. We strive to create an environment where everyone feels
-            valued and respected.
-          </p>
-
-          <h2 className="mt-5 mb-4">Careers</h2>
-          <p>
-            Looking for an exciting career opportunity? Join our team and help
-            us shape the future!
-          </p>
-
-          <h2 className="mt-5 mb-4">The Environmental Impact of E-Waste</h2>
-          <p>
-            E-waste has significant environmental consequences. It's crucial to
-            address these issues to protect our planet.
-          </p>
-
-          <div className="e-waste-impact mt-5">
-            <h3 className="text-primary mb-4">
-              Addressing the Consequences of Improper E-Waste Disposal
-            </h3>
-            <p>
-              <strong>Toxic Pollution Hazard:</strong> Improper e-waste disposal
-              releases hazardous materials like lead and mercury, polluting soil
-              and water sources.
-            </p>
-            <p>
-              <strong>Greenhouse Gas Emissions:</strong> E-waste contributes to
-              greenhouse gas emissions, exacerbating climate change and global
-              warming.
-            </p>
-            <p>
-              <strong>Resource Waste Concerns:</strong> Valuable recoverable
-              materials in e-waste, worth $57 billion in 2019, are largely
-              un-recycled, leading to resource depletion.
-            </p>
+          {/* Facts About E-Waste in India Section */}
+          <h2 className="mt-5 mb-4 section-heading">E-Waste in India: The Growing Concern</h2>
+          <div className="facts-container">
+            <div className="fact-card">
+              <h3>India's E-Waste Growth</h3>
+              <p>
+                India generates over 3.2 million metric tons of e-waste each year, making it the third-largest e-waste generator globally. This number is expected to grow with increasing electronic consumption.
+              </p>
+            </div>
+            <div className="fact-card">
+              <h3>Low Recycling Rate</h3>
+              <p>
+                Only 10% of India's e-waste is processed through formal recycling channels, leaving a significant portion unmanaged and contributing to pollution.
+              </p>
+            </div>
+            <div className="fact-card">
+              <h3>Health and Environmental Risks</h3>
+              <p>
+                Improper disposal of e-waste can lead to the release of hazardous materials, including lead, mercury, and cadmium, causing soil, air, and water pollution and leading to severe health issues for communities.
+              </p>
+            </div>
+            <div className="fact-card">
+              <h3>Informal Sector Challenges</h3>
+              <p>
+                Over 95% of e-waste in India is handled by informal recyclers, who often lack the necessary safety measures. This contributes to environmental degradation and puts workers at significant health risk.
+              </p>
+            </div>
           </div>
 
-          <div className="e-waste-challenges mt-5">
-            <h3 className="text-primary mb-4">
-              Challenges in E-Waste Management
-            </h3>
-            <p>
-              <strong>Low Recycling Rates:</strong> Merely 1% of e-waste is
-              recycled in India, highlighting the urgent need for improved
-              recycling infrastructure and awareness.
-            </p>
-            <p>
-              <strong>Inadequate Policies and Enforcement:</strong> The absence
-              of robust policies and enforcement mechanisms hinders proper
-              e-waste management, necessitating stricter regulations and
-              compliance monitoring.
-            </p>
-            <p>
-              <strong>Infrastructure Gaps and Undocumented Disposal:</strong>{" "}
-              Lack of proper infrastructure results in unrecorded disposal
-              practices, emphasizing the importance of building efficient
-              collection and recycling facilities.
-            </p>
-            <p>
-              <strong>Health Risks for Informal Recycling Workers:</strong>{" "}
-              Workers in informal e-waste recycling sectors face severe health
-              hazards due to improper handling, emphasizing the need for
-              occupational safety measures and formalized recycling processes.
-            </p>
-          </div>
+          {/* Recycling Electronics Waste Section */}
+          <h2 className="mt-5 mb-4 section-heading">The Importance of Recycling Electronics Waste</h2>
+          <p>
+            Recycling e-waste is crucial for several reasons. Electronics contain valuable materials such as gold, silver, copper, and rare earth elements, which can be recovered and reused. Proper recycling ensures that these resources are not wasted and prevents toxic substances from contaminating the environment.
+          </p>
+          <p>
+            Unfortunately, the current recycling infrastructure in India is underdeveloped, with a lack of awareness, inadequate facilities, and insufficient regulatory enforcement. Our platform addresses these challenges by providing an organized process for e-waste collection and recycling through licensed vendors. 
+          </p>
+          <p>
+            Through proper recycling, we reduce the demand for new raw materials, conserve energy, and minimize the carbon footprint associated with the manufacturing of new electronic devices. Additionally, responsible recycling helps prevent the illegal export of e-waste to developing countries, where improper handling leads to further environmental and health disasters.
+          </p>
 
-          <div className="e-waste-success mt-5">
-            <h3 className="text-primary mb-4">
-              Success Stories in E-Waste Management
-            </h3>
-            <p>
-              <strong>Taiwan's Remarkable Recycling Rate:</strong> Taiwan leads
-              with a recycling rate of nearly 90% for e-waste, showcasing a
-              highly effective system.
-            </p>
-            <p>
-              <strong>Apple's Daisy Robotic Technology:</strong> Apple's Daisy
-              robot technology revolutionizes e-waste recycling, demonstrating
-              innovation and sustainability.
-            </p>
-            <p>
-              <strong>Basel Convention Collaborations:</strong> International
-              collaborations under the Basel Convention are enhancing global
-              e-waste management practices through shared expertise and
-              resources.
-            </p>
+          {/* Platform Impact Section */}
+          <h2 className="mt-5 mb-4 section-heading">Impact of Our Platform</h2>
+          <div className="impact-container">
+            <div className="impact-card">
+              <h3>Environmental Impact</h3>
+              <p>
+                Our platform has helped divert thousands of tons of e-waste from landfills, reducing pollution and conserving valuable resources. By ensuring that e-waste is recycled responsibly, we are contributing to a healthier planet and supporting the circular economy.
+              </p>
+            </div>
+            <div className="impact-card">
+              <h3>Empowering Vendors</h3>
+              <p>
+                We empower local vendors by providing them with a steady stream of e-waste for collection and recycling. This not only creates economic opportunities for these vendors but also ensures that the e-waste is handled in compliance with environmental regulations.
+              </p>
+            </div>
+            <div className="impact-card">
+              <h3>Promoting Safe Practices</h3>
+              <p>
+                By working with licensed vendors, our platform ensures that the recycling process adheres to strict safety standards, reducing the exposure of workers to toxic substances and promoting better health outcomes in the recycling sector.
+              </p>
+            </div>
+            <div className="impact-card">
+              <h3>Technological Innovation</h3>
+              <p>
+                Our platform leverages machine learning models to predict the price of waste materials, optimizing the value assessment process for both customers and vendors. This technology ensures that customers receive fair compensation for their e-waste and vendors can maximize their profits through efficient recycling practices.
+              </p>
+            </div>
           </div>
+          
+          {/* Data and ML Integration Section */}
+          <h2 className="mt-5 mb-4 section-heading">How Our Platform Works</h2>
+          <p>
+            Our platform connects customers with licensed vendors who collect their e-waste. The waste is then sent to certified recycling facilities, where it undergoes a series of processes, including sorting, shredding, and material recovery. The recovered materials are then reintroduced into the manufacturing process, reducing the need for new raw materials.
+          </p>
+          <p>
+            A key feature of our platform is the integration of machine learning models that predict the price of waste materials based on current market trends, material composition, and condition. This ensures that customers receive fair compensation while vendors can optimize their profits. The data-driven approach also helps in tracking and managing the flow of e-waste, ensuring transparency and accountability in the recycling process.
+          </p>
         </div>
       </section>
     </div>

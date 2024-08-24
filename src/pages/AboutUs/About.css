@@ -1,66 +1,198 @@
-/* src/components/AboutUs.css */
-
-.about-us-container {
-    background-color: #ffffff;
-    /* White background for the page */
-    color: #333;
-    /* Dark text color for readability */
-    background-image: url('./EDC.jpg');
-    /* Path to the background image */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    
-}
-
-.intro-section {
-    background-color: rgba(4, 39, 73, 0.8);
-    /* Dark blue background with opacity for readability */
-    color: white;
-}
-
-.intro-section h1 {
-    font-size: 2.5rem;
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0a2540; /* Dark Blue Background */
+    color: #ffffff; /* White Text Color */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+  
+  /* About Us Container */
+  .about-us-container {
+    background-color: #0a2540;
+    padding: 50px 0;
+    color: #ffffff;
+  }
+  
+  /* Intro Section */
+  .intro-section {
+    background: linear-gradient(135deg, #1f4068, #16222a);
+    padding: 100px 0;
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  .intro-section h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    letter-spacing: 2px;
     margin-bottom: 20px;
-}
-
-.intro-section p {
-    font-size: 1.25rem;
-}
-
-.content-section h2 {
-    font-size: 2rem;
-    color: #042749;
-}
-
-.content-section p {
-    font-size: 1rem;
-    color:white;
-    margin-bottom: 20px;
-}
-
-.e-waste-impact,
-.e-waste-challenges,
-.e-waste-success {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.e-waste-impact h3,
-.e-waste-challenges h3,
-.e-waste-success h3 {
+    text-transform: uppercase;
+  }
+  
+  .intro-section p {
     font-size: 1.5rem;
-}
-
-.e-waste-impact p,
-.e-waste-challenges p,
-.e-waste-success p {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  /* Section Headings */
+  .section-heading {
+    font-size: 2.5rem;
+    color: #00bcd4; /* Cyan Text for Headings */
+    margin-bottom: 2rem;
+    border-bottom: 3px solid #00bcd4; /* Cyan Border for Headings */
+    padding-bottom: 10px;
+    display: inline-block;
+  }
+  
+  /* Content Section */
+  .content-section {
+    background-color: #1a3b5d;
+    padding: 60px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    margin-bottom: 50px;
+    animation: fadeInUp 1s ease-in-out;
+  }
+  
+  .content-section p {
+    font-size: 1.2rem;
+    line-height: 1.9;
+    margin-bottom: 2rem;
+    color: #d0d0d0;
+  }
+  
+  /* Facts and Impact Containers */
+  .facts-container,
+  .impact-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 4rem;
+  }
+  
+  /* 3D Card Styles */
+  .fact-card,
+  .impact-card {
+    background-color: #223a5f; /* Dark Slate Blue */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5), inset 0 -2px 10px rgba(255, 255, 255, 0.1); /* Deep 3D Shadows */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .fact-card:hover,
+  .impact-card:hover {
+    transform: translateY(-15px); /* Lift the card on hover */
+    box-shadow: 0 30px 50px rgba(0, 0, 0, 0.6), inset 0 -4px 15px rgba(255, 255, 255, 0.1); /* Increase shadow on hover */
+  }
+  
+  .fact-card::before,
+  .impact-card::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.1)); /* Light gradient for a 3D lighting effect */
+    border-radius: inherit;
+    z-index: -1;
+  }
+  
+  .fact-card h3,
+  .impact-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #00bcd4; /* Cyan Text */
+  }
+  
+  .fact-card p,
+  .impact-card p {
+    font-size: 1.1rem;
+    color: #e0e0e0; /* Light Grey Text */
+  }
+  
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+  }
+  
+  /* Fade-in Animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .intro-section h1 {
+      font-size: 2.5rem;
+    }
+  
+    .intro-section p {
+      font-size: 1.2rem;
+    }
+  
+    .section-heading {
+      font-size: 2rem;
+    }
+  
+    .content-section {
+      padding: 30px;
+    }
+  
+    .facts-container,
+    .impact-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Button Styles */
+  .btn-primary {
+    background-color: #ffdd59;
+    color: #0a2540;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .btn-primary:hover {
+    background-color: #ffe680;
+    transform: translateY(-5px);
+  }
+  
+  /* Footer Styles */
+  .footer {
+    background-color: #0a2540;
+    padding: 40px 0;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 50px;
+    border-top: 2px solid #ffdd59;
+  }
+  
+  .footer p {
     font-size: 1rem;
-    color: #333;
-}
-.mt-5 mb-4{
-    colour:White;
-    font-style: oblique;
-}
+    color: #d0d0d0;
+  }
+  
