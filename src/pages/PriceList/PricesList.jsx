@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import "./PriceList.css"; // Import the CSS file
+import React from "react";
 import { useSelector } from "react-redux";
+import { motion } from 'framer-motion';
 
-// Updated e-waste items with predefined commission rates (no price data)
 const eWasteItems = [
   { name: "Mobile Phone", commissionRate: 5 },
   { name: "Laptop", commissionRate: 13 },
@@ -27,83 +26,80 @@ const eWasteItems = [
 ];
 
 const PriceList = () => {
-  const [formData, setFormData] = useState({
-    productName: "",
-    quantity: "",
-    customerName: "",
-    contact: "",
-    address: "",
-  });
-
   const { user, role } = useSelector((state) => state.auth);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+  const pageStyle = {
+    minHeight: '100vh',
+    background: 'linear-gradient(135deg, #6366F1, #3B82F6, #2DD4BF)',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '50px 20px',
+    color: 'white'
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form Data:", formData);
+  const tableStyle = {
+    width: '100%',
+    maxWidth: '800px',
+    borderCollapse: 'separate',
+    borderSpacing: '0 15px',
+    marginTop: '30px'
   };
 
-  // Dummy prices for the purpose of commission calculation
-  const dummyPrices = {
-    "Mobile Phone": 500,
-    Laptop: 2000,
-    Television: 1500,
-    Refrigerator: 3000,
-    "Washing Machine": 2500,
-    "Air Conditioner": 4000,
-    "Desktop Computer": 2200,
-    Keyboard: 150,
-    Mouse: 100,
-    Monitor: 1200,
-    Printer: 800,
-    Speakers: 600,
-    CPU: 1800,
-    Motherboard: 1000,
-    "Graphics Card": 1200,
-    "Hard Drive": 500,
-    "Power Supply Unit": 400,
-    Router: 300,
-    UPS: 700,
-    Microwave: 2500,
+  const cellStyle = {
+    padding: '15px',
+    textAlign: 'left',
+    background: 'rgba(255,255,255,0.1)',
+    backdropFilter: 'blur(10px)',
+    borderRadius: '10px'
   };
 
-  // Helper function to calculate commission amount based on predefined commission rate
-  const calculateCommissionAmount = (productName, commissionRate) => {
-    const price = dummyPrices[productName];
-    return ((price * commissionRate) / 100).toFixed(2); // Fixed to two decimal places
+  const headerCellStyle = {
+    ...cellStyle,
+    fontWeight: 'bold',
+    fontSize: '1.1rem',
+    background: 'rgba(255,255,255,0.2)'
   };
 
   return (
-    <div className="price-list-page">
-      <h2 className="page-heading">E-Waste Price List</h2>
-      <table className="price-list-table">
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      style={pageStyle}
+    >
+      <h2 style={{ marginBottom: '30px', fontSize: '2.5rem', textShadow: '2px 2px 4px rgba(0,0,0,0.1)' }}>E-Waste Price List</h2>
+      <motion.table 
+        style={tableStyle}
+        initial={{ y: 50 }}
+        animate={{ y: 0 }}
+        transition={{ type: 'spring', stiffness: 100 }}
+      >
         <thead>
           <tr>
-            <th>Product</th>
-            {role && role === "Vendor" && user ? (
-              <th>Commission Rate (%)</th>
-            ) : null}
+            <th style={headerCellStyle}>Product</th>
+            {role === "Vendor" && user && (
+              <th style={headerCellStyle}>Commission Rate (%)</th>
+            )}
           </tr>
         </thead>
         <tbody>
           {eWasteItems.map((item, index) => (
-            <tr key={index}>
-              <td>{item.name}</td>
-              {role && role === "Vendor" && user && (
-                <td>{item.commissionRate}%</td>
+            <motion.tr 
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <td style={cellStyle}>{item.name}</td>
+              {role === "Vendor" && user && (
+                <td style={cellStyle}>{item.commissionRate}%</td>
               )}
-            </tr>
+            </motion.tr>
           ))}
         </tbody>
-      </table>
-    </div>
+      </motion.table>
+    </motion.div>
   );
 };
 

@@ -6,6 +6,7 @@ import { Button, Form, Container, Row, Col, Card } from "react-bootstrap";
 import { getFirestore, doc, setDoc, getDoc, query, where, collection, getDocs } from "firebase/firestore";
 import { app } from "../firebase"; // Make sure this is pointing to your Firebase configuration
 import { useNavigate } from "react-router-dom";
+import { motion } from 'framer-motion';
 
 const db = getFirestore(app);
 
@@ -120,77 +121,101 @@ const GetLicence = () => {
       toast.error("Error generating license. Please try again.");
     }
   };
+    const pageStyle = {
+    minHeight: '100vh',
+    background: 'linear-gradient(135deg, #6366F1, #3B82F6, #2DD4BF)',
+    color: 'white',
+    padding: '50px 20px',
+  };
+
+  const cardStyle = {
+    background: 'rgba(255,255,255,0.2)',
+    backdropFilter: 'blur(10px)',
+    borderRadius: '15px',
+    padding: '30px',
+    marginBottom: '30px',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+  };
 
   return (
-    <Container>
-      <Row className="justify-content-center">
-        <Col md={6}>
-          {vendorData ? (
-            <Card className="text-center">
-              <Card.Body>
-                <Card.Title>Vendor Details</Card.Title>
-                <Card.Text><strong>Name:</strong> {vendorData.vendorName}</Card.Text>
-                <Card.Text><strong>Email:</strong> {vendorData.email}</Card.Text>
-                <Card.Text><strong>License Number:</strong> {vendorData.licenseNumber}</Card.Text>
-              </Card.Body>
-            </Card>
-          ) : (
-            <>
-              <h2 className="text-center my-4">Get License</h2>
-              <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formVendorName">
-                  <Form.Label>Vendor Name</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter vendor name"
-                    value={vendorName}
-                    onChange={(e) => setVendorName(e.target.value)}
-                    required
-                  />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formPhoneNumber">
-                  <Form.Label>Phone Number</Form.Label>
-                  <Form.Control
-                    type="tel"
-                    placeholder="Enter phone number"
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                    required
-                  />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formLocality">
-                  <Form.Label>Locality</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter locality"
-                    value={locality}
-                    onChange={(e) => setLocality(e.target.value)}
-                    required
-                  />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formAadharNumber">
-                  <Form.Label>Aadhar Number</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter Aadhar number"
-                    value={aadharNumber}
-                    onChange={(e) => setAadharNumber(e.target.value)}
-                    required
-                  />
-                </Form.Group>
-
-                <Button variant="primary" type="submit" className="w-100">
-                  Generate License
-                </Button>
-              </Form>
-            </>
-          )}
-        </Col>
-      </Row>
-    </Container>
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      style={pageStyle}
+    >
+      <Container>
+        <Row className="justify-content-center">
+          <Col md={8}>
+            <motion.div
+              initial={{ y: 50 }}
+              animate={{ y: 0 }}
+              transition={{ type: 'spring', stiffness: 100 }}
+              style={cardStyle}
+            >
+              {vendorData ? (
+                <Card className="text-center" style={{ background: 'transparent', border: 'none' }}>
+                  <Card.Body>
+                    <motion.h2 
+                      className="mb-4"
+                      initial={{ y: -20 }}
+                      animate={{ y: 0 }}
+                      transition={{ delay: 0.2 }}
+                    >
+                      Vendor Details
+                    </motion.h2>
+                    <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}><strong>Name:</strong> {vendorData.vendorName}</motion.p>
+                    <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}><strong>Email:</strong> {vendorData.email}</motion.p>
+                    <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}><strong>License Number:</strong> {vendorData.licenseNumber}</motion.p>
+                  </Card.Body>
+                </Card>
+              ) : (
+                <>
+                  <motion.h2 
+                    className="text-center mb-4"
+                    initial={{ y: -20 }}
+                    animate={{ y: 0 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    Get License
+                  </motion.h2>
+                  <Form onSubmit={handleSubmit}>
+                    {['Vendor Name', 'Phone Number', 'Locality', 'Aadhar Number'].map((field, index) => (
+                      <motion.div
+                        key={field}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 + index * 0.1 }}
+                      >
+                        <Form.Group className="mb-3" controlId={`form${field.replace(' ', '')}`}>
+                          <Form.Label>{field}</Form.Label>
+                          <Form.Control
+                            type={field === 'Phone Number' || field === 'Aadhar Number' ? 'tel' : 'text'}
+                            placeholder={`Enter ${field.toLowerCase()}`}
+                            value={eval(field.replace(' ', '').charAt(0).toLowerCase() + field.replace(' ', '').slice(1))}
+                            onChange={(e) => eval(`set${field.replace(' ', '')}(e.target.value)`)}
+                            required
+                          />
+                        </Form.Group>
+                      </motion.div>
+                    ))}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.7 }}
+                    >
+                      <Button variant="light" type="submit" className="w-100">
+                        Generate License
+                      </Button>
+                    </motion.div>
+                  </Form>
+                </>
+              )}
+            </motion.div>
+          </Col>
+        </Row>
+      </Container>
+    </motion.div>
   );
 };
 
