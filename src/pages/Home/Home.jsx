@@ -116,7 +116,7 @@ function Home() {
         </div>
       </div>
    {/* Contact Us Form */}
-<div className="container my-5">
+<div className="container">
   <div className="row ">
     <div className="col-md-8 mx-auto">
       <h3 className="text-center mb-4">Contact Us</h3>

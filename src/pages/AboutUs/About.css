@@ -5,11 +5,12 @@
     /* White background for the page */
     color: #333;
     /* Dark text color for readability */
-    background-image: url('./aboutimage.jpg');
+    background-image: url('./EDC.jpg');
     /* Path to the background image */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    
 }
 
 .intro-section {
@@ -34,7 +35,7 @@
 
 .content-section p {
     font-size: 1rem;
-    color: #555;
+    color:white;
     margin-bottom: 20px;
 }
 
@@ -58,4 +59,8 @@
 .e-waste-success p {
     font-size: 1rem;
     color: #333;
+}
+.mt-5 mb-4{
+    colour:White;
+    font-style: oblique;
 }
