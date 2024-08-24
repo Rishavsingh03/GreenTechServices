@@ -1,0 +1,108 @@
+/* General page styles */
+.price-list-page {
+    background-color: #0c1841; /* Dark blue background */
+    color: #ffffff;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .page-heading {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fbbf24; /* Bright yellow color */
+  }
+  
+  .price-list-table {
+    width: 80%;
+    margin-bottom: 40px;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .price-list-table th, .price-list-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #cccccc;
+  }
+  
+  .price-list-table th {
+    background-color: #11236b; /* Lighter blue for headers */
+    color: #ffffff;
+  }
+  
+  .price-list-table tr:hover {
+    background-color: #cad1dd; /* Light gray hover effect */
+  }
+  
+  .form-heading {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fbbf24;
+  }
+  
+  .form-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 600px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: #000102;
+  }
+  
+  .form-input, .form-textarea, .form-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .form-textarea {
+    height: 100px;
+    resize: none;
+  }
+  
+  .form-submit-btn {
+    background-color: #fbbf24;
+    color: #ffffff;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-submit-btn:hover {
+    background-color: #f59e0b;
+  }
+  
+  @media (max-width: 768px) {
+    .price-list-table, .form-container {
+      width: 100%;
+    }
+  }
+  
