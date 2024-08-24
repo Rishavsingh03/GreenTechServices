@@ -37,14 +37,14 @@ const MyBooking = () => {
 
   return (
     <div className="container mt-5">
-      <h2 className="text-center mb-4">My Bookings</h2>
+      <h2 className="text-center mb-4 text-primary" style={{ color: "#0d6efd" }}>My Bookings</h2>
       <div className="row">
         {bookings.length > 0 ? (
           bookings.map((booking, index) => (
             <div key={index} className="col-md-6">
-              <div className="card mb-4 shadow-sm">
+              <div className="card mb-4 shadow" style={{ borderRadius: "15px", borderColor: "#0d6efd" }}>
                 <div className="card-body">
-                  <h5 className="card-title">
+                  <h5 className="card-title text-center font-weight-bold" style={{ color: "#0d6efd", fontWeight: "700" }}>
                     Booking for {booking.address} on {booking.bookingDate}
                   </h5>
                   <p className="card-text">
@@ -56,7 +56,7 @@ const MyBooking = () => {
                   <p className="card-text">
                     <strong>Contact:</strong> {booking.user.contact}
                   </p>
-                  <h6 className="mt-3">Vendor Details:</h6>
+                  <h6 className="mt-3 text-center font-weight-bold">Vendor Details:</h6>
                   <p className="card-text">
                     <strong>Name:</strong> {booking.vendor.name}
                   </p>
