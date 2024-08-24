@@ -122,7 +122,7 @@ function Home() {
       <h3 className="text-center mb-4">Contact Us</h3>
       <form className="p-4 rounded shadow text-white mb-5">
         <div className="form-group mb-3">
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name" className='text-light'>Name</label>
           <input
             type="text"
             className="form-control text-white"
@@ -152,7 +152,7 @@ function Home() {
           </style>
         </div>
         <div className="form-group mb-3">
-          <label htmlFor="email">Email</label>
+          <label className='text-light' htmlFor="email">Email</label>
           <input
             type="email"
             className="form-control text-white"
@@ -182,7 +182,7 @@ function Home() {
           </style>
         </div>
         <div className="form-group mb-3">
-          <label htmlFor="message">Message</label>
+          <label htmlFor="message" className='text-light'>Message</label>
           <textarea
             className="form-control text-white"
             id="message"
