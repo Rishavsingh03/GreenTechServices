@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { motion } from 'framer-motion';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { motion } from "framer-motion";
+import { Form, Button, Container, Row, Col } from "react-bootstrap";
 
 const PredictPrices = () => {
   const [brand, setBrand] = useState("");
@@ -9,6 +9,49 @@ const PredictPrices = () => {
   const [yearOfPurchase, setYearOfPurchase] = useState("");
   const [damage, setDamage] = useState("");
   const [predictedPrice, setPredictedPrice] = useState(null);
+
+  const brands = [
+    "Lenovo",
+    "Huawei",
+    "JBL",
+    "Apple",
+    "Sony",
+    "Samsung",
+    "Asus",
+    "Canon",
+    "Dell",
+    "Microsoft",
+    "LG",
+    "Xiaomi",
+    "Nikon",
+    "Logitech",
+    "Acer",
+    "Bose",
+    "HP",
+  ];
+
+  const types = [
+    "Laptop",
+    "Refrigerator",
+    "TV",
+    "Washing Machine",
+    "Microwave",
+    "Hard Drive",
+    "Speaker",
+    "Mouse",
+    "Surface Pro",
+    "Keyboard",
+    "Pendrive",
+    "PlayStation",
+    "Motherboard",
+    "Camera",
+    "Mobile Phone",
+    "Monitor",
+    "SSD",
+    "Tablet",
+  ];
+
+  const damages = ["physical damage", "working", "not working"];
 
   const handlePredict = async (e) => {
     e.preventDefault();
@@ -32,26 +75,26 @@ const PredictPrices = () => {
       );
 
       let temp = response.data["Predicted Price (INR)"] / 10;
-      if (type.toLowerCase() === 'mouse') {
+      if (type.toLowerCase() === "mouse") {
         temp = temp / 80;
       }
-      if (type.toLowerCase() === 'motherboard') {
+      if (type.toLowerCase() === "motherboard") {
         temp = temp / 130;
       }
-      if (type.toLowerCase() === 'lights') {
+      if (type.toLowerCase() === "lights") {
         temp = temp / 110;
       }
-      if (type.toLowerCase() === 'pendrive') {
+      if (type.toLowerCase() === "pendrive") {
         temp = temp / 130;
       }
-      if (damage === 'not working') {
+      if (damage === "not working") {
         if (temp > 1000) {
           temp = temp / 2;
         } else {
           temp = temp - 40;
         }
       }
-      if (damage === 'physical damage') {
+      if (damage === "physical damage") {
         if (temp > 1000) {
           temp = temp / 3;
         } else {
@@ -65,23 +108,23 @@ const PredictPrices = () => {
   };
 
   const pageStyle = {
-    minHeight: '100vh',
-    background: 'linear-gradient(135deg, #6366F1, #3B82F6, #2DD4BF)',
-    color: 'white',
-    padding: '50px 20px',
+    minHeight: "100vh",
+    background: "linear-gradient(135deg, #6366F1, #3B82F6, #2DD4BF)",
+    color: "white",
+    padding: "50px 20px",
   };
 
   const cardStyle = {
-    background: 'rgba(255,255,255,0.2)',
-    backdropFilter: 'blur(10px)',
-    borderRadius: '15px',
-    padding: '30px',
-    marginBottom: '30px',
-    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    background: "rgba(255,255,255,0.2)",
+    backdropFilter: "blur(10px)",
+    borderRadius: "15px",
+    padding: "30px",
+    marginBottom: "30px",
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
   };
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
@@ -93,10 +136,10 @@ const PredictPrices = () => {
             <motion.div
               initial={{ y: 50 }}
               animate={{ y: 0 }}
-              transition={{ type: 'spring', stiffness: 100 }}
+              transition={{ type: "spring", stiffness: 100 }}
               style={cardStyle}
             >
-              <motion.h2 
+              <motion.h2
                 className="text-center mb-4"
                 initial={{ y: -20 }}
                 animate={{ y: 0 }}
@@ -113,12 +156,18 @@ const PredictPrices = () => {
                   <Form.Group className="mb-3" controlId="formBrand">
                     <Form.Label>Brand</Form.Label>
                     <Form.Control
-                      type="text"
-                      placeholder="Enter brand"
+                      as="select"
                       value={brand}
                       onChange={(e) => setBrand(e.target.value)}
                       required
-                    />
+                    >
+                      <option value="">Select Brand</option>
+                      {brands.map((b, index) => (
+                        <option key={index} value={b}>
+                          {b}
+                        </option>
+                      ))}
+                    </Form.Control>
                   </Form.Group>
                 </motion.div>
 
@@ -130,12 +179,18 @@ const PredictPrices = () => {
                   <Form.Group className="mb-3" controlId="formType">
                     <Form.Label>Type</Form.Label>
                     <Form.Control
-                      type="text"
-                      placeholder="Enter type"
+                      as="select"
                       value={type}
                       onChange={(e) => setType(e.target.value)}
                       required
-                    />
+                    >
+                      <option value="">Select Type</option>
+                      {types.map((t, index) => (
+                        <option key={index} value={t}>
+                          {t}
+                        </option>
+                      ))}
+                    </Form.Control>
                   </Form.Group>
                 </motion.div>
 
@@ -164,12 +219,18 @@ const PredictPrices = () => {
                   <Form.Group className="mb-3" controlId="formDamage">
                     <Form.Label>Damage</Form.Label>
                     <Form.Control
-                      type="text"
-                      placeholder="Enter damage description"
+                      as="select"
                       value={damage}
                       onChange={(e) => setDamage(e.target.value)}
                       required
-                    />
+                    >
+                      <option value="">Select Damage</option>
+                      {damages.map((d, index) => (
+                        <option key={index} value={d}>
+                          {d}
+                        </option>
+                      ))}
+                    </Form.Control>
                   </Form.Group>
                 </motion.div>
 
@@ -184,7 +245,7 @@ const PredictPrices = () => {
                 </motion.div>
               </Form>
               {predictedPrice && (
-                <motion.div 
+                <motion.div
                   className="mt-4 text-center"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
