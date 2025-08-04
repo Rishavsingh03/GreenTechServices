@@ -57,10 +57,8 @@ GreenTech Services is a user-friendly application designed to simplify the proce
 2. **Integration Testing**: Run `npm run test:integration` to run integration tests.
 3. **End-to-End Testing**: Run `npm run test:e2e` to run end-to-end tests.
 
-📸 Screenshots
-===============
 
-[Insert screenshots of the application in different states]
+
 
 📦 API Reference
 ================
@@ -70,14 +68,14 @@ GreenTech Services is a user-friendly application designed to simplify the proce
 👤 Author
 ==========
 
-* **Name:** Ayush Ranjan , Rishav Kumar , Divyam Sinha
-* **Email:** ayshrnj@gmaul.com
+* Name: Ayush Ranjan , Rishav Kumar , Divyam Sinha
+* **Email:** ayshrnj@gmail.com
 * **GitHub:** ayshrnjn
 
 📝 License
 ==========
 
 * **License:** MIT License
-* **Copyright:** Ayush Ranjan 2023
+* **Copyright:** Ayush Ranjan Rishav Kumar Divyam Sinha 2023
 
-Note: This README is a sample, you should adjust it according to your project's specific needs and requirements.
+
