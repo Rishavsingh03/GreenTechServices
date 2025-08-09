@@ -90,10 +90,10 @@ const Login = () => {
                 </div>
                 <div className="demo-credentials">
                   <div className="demo-credential">
-                    <strong>Customer:</strong> customer@demo.com / customer123
+                    <strong>Customer:</strong> customer@demo.com / customer@123
                   </div>
                   <div className="demo-credential">
-                    <strong>Vendor:</strong> vendor@demo.com / vendor123
+                    <strong>Vendor:</strong> vendor@demo.com / vendor@123
                   </div>
                 </div>
               </div>
