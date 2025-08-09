@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { motion } from "framer-motion";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import "./PredictPrices.css";
 
 const PredictPrices = () => {
   const [brand, setBrand] = useState("");
@@ -107,52 +107,17 @@ const PredictPrices = () => {
     }
   };
 
-  const pageStyle = {
-    minHeight: "100vh",
-    background: "linear-gradient(135deg, #6366F1, #3B82F6, #2DD4BF)",
-    color: "white",
-    padding: "50px 20px",
-  };
-
-  const cardStyle = {
-    background: "rgba(255,255,255,0.2)",
-    backdropFilter: "blur(10px)",
-    borderRadius: "15px",
-    padding: "30px",
-    marginBottom: "30px",
-    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-  };
-
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      style={pageStyle}
-    >
+    <div className="predict-prices-container">
       <Container>
         <Row className="justify-content-center">
           <Col md={8}>
-            <motion.div
-              initial={{ y: 50 }}
-              animate={{ y: 0 }}
-              transition={{ type: "spring", stiffness: 100 }}
-              style={cardStyle}
-            >
-              <motion.h2
-                className="text-center mb-4"
-                initial={{ y: -20 }}
-                animate={{ y: 0 }}
-                transition={{ delay: 0.2 }}
-              >
+            <div className="predict-card">
+              <h2 className="predict-title">
                 Predict E-Waste Price
-              </motion.h2>
+              </h2>
               <Form onSubmit={handlePredict}>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                >
+                <div className="form-section">
                   <Form.Group className="mb-3" controlId="formBrand">
                     <Form.Label>Brand</Form.Label>
                     <Form.Control
@@ -169,13 +134,9 @@ const PredictPrices = () => {
                       ))}
                     </Form.Control>
                   </Form.Group>
-                </motion.div>
+                </div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                >
+                <div className="form-section">
                   <Form.Group className="mb-3" controlId="formType">
                     <Form.Label>Type</Form.Label>
                     <Form.Control
@@ -192,13 +153,9 @@ const PredictPrices = () => {
                       ))}
                     </Form.Control>
                   </Form.Group>
-                </motion.div>
+                </div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                >
+                <div className="form-section">
                   <Form.Group className="mb-3" controlId="formYearOfPurchase">
                     <Form.Label>Year of Purchase</Form.Label>
                     <Form.Control
@@ -209,13 +166,9 @@ const PredictPrices = () => {
                       required
                     />
                   </Form.Group>
-                </motion.div>
+                </div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 }}
-                >
+                <div className="form-section">
                   <Form.Group className="mb-3" controlId="formDamage">
                     <Form.Label>Damage</Form.Label>
                     <Form.Control
@@ -232,33 +185,24 @@ const PredictPrices = () => {
                       ))}
                     </Form.Control>
                   </Form.Group>
-                </motion.div>
+                </div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7 }}
-                >
-                  <Button variant="light" type="submit" className="w-100">
+                <div className="form-section">
+                  <Button variant="light" type="submit" className="predict-button">
                     Predict Price
                   </Button>
-                </motion.div>
+                </div>
               </Form>
               {predictedPrice && (
-                <motion.div
-                  className="mt-4 text-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  <h3>Predicted Price: {predictedPrice.toFixed(2)} INR</h3>
-                </motion.div>
+                <div className="result-section">
+                  <h3 className="result-title">Predicted Price: {predictedPrice.toFixed(2)} INR</h3>
+                </div>
               )}
-            </motion.div>
+            </div>
           </Col>
         </Row>
       </Container>
-    </motion.div>
+    </div>
   );
 };
 

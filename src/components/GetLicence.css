@@ -1,0 +1,238 @@
+.get-license-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #4ade80, #22c55e, #16a34a);
+  color: white;
+  padding: 50px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.license-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.license-card:hover {
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+.license-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #16a34a;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.license-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: #16a34a;
+  border-radius: 2px;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+  color: #374151;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+  background: white;
+}
+
+.form-control::placeholder {
+  color: #9ca3af;
+}
+
+.form-control:disabled {
+  background: #f3f4f6;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.submit-group {
+  margin-top: 2rem;
+}
+
+.generate-button {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+}
+
+.generate-button:hover {
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+}
+
+.generate-button:active {
+  transform: translateY(0);
+}
+
+.generate-button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Vendor Details Card Styles */
+.vendor-details-card {
+  background: transparent !important;
+  border: none !important;
+  text-align: center;
+}
+
+.vendor-details-title {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #16a34a;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.vendor-details-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: #16a34a;
+  border-radius: 2px;
+}
+
+.vendor-detail-text {
+  font-size: 1.1rem;
+  color: #374151;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.vendor-detail-text strong {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .get-license-container {
+    padding: 30px 15px;
+  }
+  
+  .license-card {
+    padding: 1.5rem;
+  }
+  
+  .license-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .vendor-details-title {
+    font-size: 1.75rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .form-control {
+    padding: 0.6rem 0.875rem;
+    font-size: 0.95rem;
+  }
+  
+  .generate-button {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .get-license-container {
+    padding: 20px 10px;
+  }
+  
+  .license-card {
+    padding: 1.25rem;
+  }
+  
+  .license-title {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .license-title::after {
+    width: 80px;
+    height: 3px;
+  }
+  
+  .vendor-details-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .vendor-details-title::after {
+    width: 60px;
+    height: 2px;
+  }
+  
+  .form-control {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+  
+  .generate-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}

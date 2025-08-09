@@ -1,131 +1,110 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { FaRecycle, FaHome, FaBuilding, FaLeaf } from 'react-icons/fa';
+import { FaLeaf, FaRecycle, FaShieldAlt, FaClock, FaHome, FaCalculator, FaBuilding } from 'react-icons/fa';
+import './Home.css';
 
 function Home() {
-  const gradientBg = 'linear-gradient(135deg, #6366F1, #3B82F6, #2DD4BF)';
-  
   return (
-    <div style={{ background: gradientBg, minHeight: '100vh', color: '#ffffff' }}>
+    <div className="home-container">
       {/* Hero Section */}
-      <motion.section 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="hero d-flex align-items-center justify-content-center text-center"
-        style={{ height: '100vh', padding: '2rem' }}
-      >
-        <div>
-          <motion.h1 
-            initial={{ y: -50 }}
-            animate={{ y: 0 }}
-            transition={{ type: 'spring', stiffness: 120 }}
-            className="display-2 fw-bold mb-4"
-            style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}
-          >
-            Revolutionizing E-Waste Management
-          </motion.h1>
-          <motion.p
-            initial={{ y: 50 }}
-            animate={{ y: 0 }}
-            transition={{ type: 'spring', stiffness: 120, delay: 0.2 }}
-            className="lead mb-4"
-            style={{ maxWidth: '800px', margin: '0 auto' }}
-          >
-            Join us in creating a sustainable future through innovative e-waste solutions.
-          </motion.p>
-          <motion.div
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4 }}
-          >
-            <Link to="/about" className="btn btn-light btn-lg me-3">Learn More</Link>
-            <Link to="/contact" className="btn btn-outline-light btn-lg">Contact Us</Link>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Services Section */}
-      <section className="services py-5" style={{ background: 'rgba(255,255,255,0.1)' }}>
-        <div className="container">
-          <h2 className="text-center mb-5 display-4 fw-bold">Our Services</h2>
-          <div className="row g-4">
-            {[
-              { icon: FaHome, title: 'Residential Collection', description: 'Eco-friendly recycling for households' },
-              { icon: FaBuilding, title: 'Commercial Collection', description: 'Tailored solutions for businesses' },
-              { icon: FaRecycle, title: 'Recycling Process', description: 'State-of-the-art e-waste processing' },
-              { icon: FaLeaf, title: 'Environmental Impact', description: 'Reducing carbon footprint' }
-            ].map((service, index) => (
-              <motion.div 
-                key={index}
-                className="col-md-6 col-lg-3"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <div className="card h-100 border-0 shadow" style={{ background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(10px)' }}>
-                  <div className="card-body text-center">
-                    <service.icon size={50} className="mb-3" />
-                    <h3 className="card-title h4 mb-3">{service.title}</h3>
-                    <p className="card-text">{service.description}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+      <section className="hero-section">
+        <div className="hero-content">
+          <h1 className="hero-title">Responsible Electronic Waste Management</h1>
+          <p className="hero-description">
+            Transform your old electronics into environmental solutions. We provide secure, eco-friendly disposal and recycling services for all your electronic devices.
+          </p>
+          <div className="hero-buttons">
+            <Link to="/slotbooking" className="btn btn-primary">Schedule Pickup</Link>
+            <Link to="/predict-prices" className="btn btn-secondary">Get Price Quote</Link>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <motion.section 
-        className="cta text-center py-5"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-      >
+      {/* Why Choose Us Section */}
+      <section className="why-choose-section">
         <div className="container">
-          <h2 className="display-4 mb-4">Ready to Make a Difference?</h2>
-          <p className="lead mb-4">Schedule your e-waste collection today and contribute to a cleaner tomorrow.</p>
-          <Link to="/slotbooking" className="btn btn-light btn-lg">Schedule Collection</Link>
-        </div>
-      </motion.section>
-
-      {/* Contact Form */}
-      <motion.section 
-        className="contact py-5"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-      >
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-md-8">
-              <div className="card border-0 shadow" style={{ background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(10px)' }}>
-                <div className="card-body p-5">
-                  <h3 className="card-title text-center mb-4">Get in Touch</h3>
-                  <form>
-                    {['Name', 'Email', 'Message'].map((field) => (
-                      <div key={field} className="mb-3">
-                        <label htmlFor={field.toLowerCase()} className="form-label">{field}</label>
-                        {field !== 'Message' ? (
-                          <input type={field === 'Email' ? 'email' : 'text'} className="form-control" id={field.toLowerCase()} placeholder={`Enter your ${field.toLowerCase()}`} />
-                        ) : (
-                          <textarea className="form-control" id="message" rows="4" placeholder="Your message"></textarea>
-                        )}
-                      </div>
-                    ))}
-                    <button type="submit" className="btn btn-light w-100">Send Message</button>
-                  </form>
-                </div>
+          <h2 className="section-title">Why Choose GreenTech Services?</h2>
+          <p className="section-subtitle">
+            We're committed to providing the most responsible and efficient electronic waste management solutions.
+          </p>
+          <div className="features-grid">
+            <div className="feature-card">
+              <div className="feature-icon">
+                <FaLeaf />
               </div>
+              <h3>Eco-Friendly</h3>
+              <p>100% responsible recycling with zero landfill waste</p>
+            </div>
+            <div className="feature-card">
+              <div className="feature-icon">
+                <FaShieldAlt />
+              </div>
+              <h3>Secure Disposal</h3>
+              <p>Complete data destruction and secure handling of sensitive devices</p>
+            </div>
+            <div className="feature-card">
+              <div className="feature-icon">
+                <FaClock />
+              </div>
+              <h3>Quick Service</h3>
+              <p>Same-day pickup available with flexible scheduling</p>
+            </div>
+            <div className="feature-card">
+              <div className="feature-icon">
+                <FaRecycle />
+              </div>
+              <h3>Certified</h3>
+              <p>Licensed and certified for proper electronic waste handling</p>
             </div>
           </div>
         </div>
-      </motion.section>
+      </section>
+
+      {/* Our Services Section */}
+      <section className="services-section">
+        <div className="container">
+          <h2 className="section-title">Our Services</h2>
+          <div className="services-grid">
+            <div className="service-card">
+              <div className="service-icon">
+                <FaHome />
+              </div>
+              <h3>Residential Pickup</h3>
+              <p>Convenient home pickup service for all your electronic devices. From smartphones to large appliances, we handle it all.</p>
+              <Link to="/slotbooking" className="btn btn-primary service-btn">Schedule Now</Link>
+            </div>
+            <div className="service-card">
+              <div className="service-icon">
+                <FaCalculator />
+              </div>
+              <h3>Price Calculator</h3>
+              <p>Get instant quotes for your electronic items based on model, year, and condition. Transparent pricing guaranteed.</p>
+              <Link to="/predict-prices" className="btn btn-primary service-btn">Get Quote</Link>
+            </div>
+            <div className="service-card">
+              <div className="service-icon">
+                <FaBuilding />
+              </div>
+              <h3>Corporate Solutions</h3>
+              <p>Bulk disposal services for businesses. Secure data destruction and compliance documentation included.</p>
+              <Link to="/about" className="btn btn-primary service-btn">Learn More</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action Section */}
+      <section className="cta-section">
+        <div className="container">
+          <h2 className="section-title">Ready to Recycle Responsibly?</h2>
+          <p className="section-subtitle">
+            Join thousands of customers who trust GreenTech Services for their electronic waste management needs.
+          </p>
+          <div className="cta-button">
+            <Link to="/slotbooking" className="btn btn-primary btn-large">Get Started Today</Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

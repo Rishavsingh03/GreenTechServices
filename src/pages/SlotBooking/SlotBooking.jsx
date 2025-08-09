@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { db } from "/src/firebase";
 import { collection, query, where, getDocs, addDoc } from "firebase/firestore";
-import { motion } from "framer-motion";
+import "./SlotBooking.css";
 
 const SlotBooking = () => {
   const { user, role } = useSelector((state) => state.auth);
@@ -90,49 +90,19 @@ const SlotBooking = () => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      style={{
-        minHeight: "100vh",
-        background: "linear-gradient(135deg, #6366F1, #3B82F6, #2DD4BF)",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        padding: "50px 20px",
-        color: "white",
-      }}
-    >
-      <h2
-        style={{
-          marginBottom: "30px",
-          fontSize: "2.5rem",
-          textShadow: "2px 2px 4px rgba(0,0,0,0.1)",
-        }}
-      >
+    <div className="slot-booking-container">
+      <h2 className="slot-booking-title">
         Slot Booking
       </h2>
-      <motion.form
+      <form
         onSubmit={handleSubmit}
-        style={{
-          background: "rgba(255,255,255,0.1)",
-          backdropFilter: "blur(10px)",
-          padding: "30px",
-          borderRadius: "15px",
-          width: "100%",
-          maxWidth: "500px",
-          boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
-        }}
-        initial={{ y: 50 }}
-        animate={{ y: 0 }}
-        transition={{ type: "spring", stiffness: 100 }}
+        className="booking-form"
       >
         {Object.entries(formData).map(([key, value]) => (
-          <div key={key}>
+          <div key={key} className="form-group">
             <label
               htmlFor={key}
-              style={{ display: "block", marginBottom: "5px" }}
+              className="form-label"
             >
               {key.charAt(0).toUpperCase() + key.slice(1)}:
             </label>
@@ -144,62 +114,34 @@ const SlotBooking = () => {
               onChange={handleChange}
               required={!["name", "email"].includes(key)}
               disabled={["name", "email"].includes(key)}
-              style={{
-                width: "100%",
-                padding: "10px",
-                marginBottom: "15px",
-                borderRadius: "5px",
-                border: "none",
-                background: "rgba(255,255,255,0.2)",
-                color: "white",
-              }}
+              className="form-input"
               placeholder={`Enter your ${key}`}
             />
           </div>
         ))}
-        <motion.button
+        <button
           type="submit"
-          style={{
-            width: "100%",
-            padding: "10px",
-            border: "none",
-            borderRadius: "5px",
-            background: "#4CAF50",
-            color: "white",
-            cursor: "pointer",
-            transition: "all 0.3s ease",
-          }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          className="submit-button"
         >
           Submit
-        </motion.button>
-      </motion.form>
+        </button>
+      </form>
 
       {vendor && (
-        <motion.div
+        <div
           id="vendor-info"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          style={{
-            marginTop: "30px",
-            padding: "20px",
-            background: "rgba(255,255,255,0.1)",
-            borderRadius: "10px",
-            backdropFilter: "blur(10px)",
-          }}
+          className="vendor-info"
         >
-          <h3 style={{ marginBottom: "10px" }}>Vendor Information</h3>
-          <p>
+          <h3 className="vendor-title">Vendor Information</h3>
+          <p className="vendor-detail">
             <strong>Name:</strong> {vendor.vendorName}
           </p>
-          <p>
+          <p className="vendor-detail">
             <strong>License Number:</strong> {vendor.licenseNumber}
           </p>
-        </motion.div>
+        </div>
       )}
-    </motion.div>
+    </div>
   );
 };
 

@@ -1,33 +1,259 @@
 /* Navbar.css */
 
-/* Custom Button Styles */
-.custom-button {
-    color: black;
-    border-color: black;
-    background-color: white;
-    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
-}
-
-.custom-button:hover {
-    color: white;
-    background-color: #042749;
-    border-color: darkorange;
-}
-
 /* Navbar Background */
 .navbar {
-    background-color: blueviolet;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Logo Styles */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.02);
+}
+
+.logo-icon {
+    color: #28a745;
+    font-size: 1.75rem;
+    filter: drop-shadow(0 1px 3px rgba(40, 167, 69, 0.15));
+}
+
+.logo-text {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: -0.3px;
+}
+
+/* Navbar Brand */
+.navbar-brand {
+    text-decoration: none;
+}
+
+.navbar-brand:hover {
+    text-decoration: none;
+}
+
+/* Navbar Container */
+.navbar-nav {
+    margin: 0 auto;
+    gap: 0;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Navbar Link Styles */
 .nav-link {
-    color: black;
-    transition: color 0.3s ease;
+    color: #1a1a1a !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    padding: 0.75rem 1.25rem !important;
+    border-radius: 6px;
+    position: relative;
+    text-decoration: none;
+    letter-spacing: 0.2px;
+    margin: 0 0.15rem;
+    text-align: center;
 }
 
 .nav-link:hover {
-    color: #042749;
-    /* Dark black color on hover */
-    text-decoration: none;
-    /* Remove underline on hover */
+    color: #28a745 !important;
+    background-color: rgba(40, 167, 69, 0.08);
+    transform: translateY(-1px);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #28a745;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 60%;
+}
+
+/* Active Navigation Link */
+.nav-link.active {
+    color: #28a745 !important;
+    background-color: rgba(40, 167, 69, 0.1);
+}
+
+/* Navbar Actions */
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-left: 1.5rem;
+}
+
+/* Schedule Pickup Button */
+.schedule-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    text-transform: none;
+    letter-spacing: 0.2px;
+}
+
+.schedule-btn:hover {
+    background-color: #218838;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(40, 167, 69, 0.3);
+}
+
+/* Custom Button Styles */
+.custom-button {
+    color: #1a1a1a;
+    border: 2px solid #1a1a1a;
+    background-color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    text-transform: none;
+    letter-spacing: 0.2px;
+}
+
+.custom-button:hover {
+    color: white;
+    background-color: #1a1a1a;
+    border-color: #1a1a1a;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(26, 26, 26, 0.2);
+}
+
+/* Navbar Text */
+.navbar-text {
+    color: #666;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* Navbar Toggle Button */
+.navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.navbar-toggler:hover {
+    background-color: rgba(40, 167, 69, 0.1);
+}
+
+/* Container spacing */
+.container-fluid {
+    padding: 0 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+    .navbar-nav {
+        margin: 1rem 0;
+        gap: 0.25rem;
+        width: 100%;
+    }
+    
+    .nav-link {
+        padding: 1rem 1.5rem !important;
+        border-radius: 8px;
+        margin: 0.25rem 0;
+        font-size: 1rem;
+    }
+    
+    .navbar-actions {
+        margin-top: 1rem;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+        width: 100%;
+    }
+    
+    .schedule-btn {
+        width: 100%;
+        text-align: center;
+        padding: 1rem 2rem;
+    }
+    
+    .custom-button {
+        width: 100%;
+        text-align: center;
+        padding: 1rem 2rem;
+    }
+    
+    .logo-text {
+        font-size: 1.25rem;
+    }
+    
+    .container-fluid {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.75rem 0;
+    }
+    
+    .logo-text {
+        font-size: 1.125rem;
+    }
+    
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 0.875rem 1.25rem !important;
+    }
+    
+    .schedule-btn,
+    .custom-button {
+        font-size: 0.85rem;
+        padding: 0.875rem 1.5rem;
+    }
+    
+    .container-fluid {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text {
+        font-size: 1rem;
+    }
+    
+    .nav-link {
+        font-size: 0.85rem;
+        padding: 0.75rem 1rem !important;
+    }
+    
+    .container-fluid {
+        padding: 0 0.75rem;
+    }
 }

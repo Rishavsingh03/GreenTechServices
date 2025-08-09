@@ -14,7 +14,7 @@ import {
 } from "firebase/firestore";
 import { app } from "../firebase"; // Ensure this points to your Firebase configuration
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import "./GetLicence.css";
 
 const db = getFirestore(app);
 
@@ -123,86 +123,35 @@ const GetLicence = () => {
     }
   };
 
-  const pageStyle = {
-    minHeight: "100vh",
-    background: "linear-gradient(135deg, #6366F1, #3B82F6, #2DD4BF)",
-    color: "white",
-    padding: "50px 20px",
-  };
-
-  const cardStyle = {
-    background: "rgba(255,255,255,0.2)",
-    backdropFilter: "blur(10px)",
-    borderRadius: "15px",
-    padding: "30px",
-    marginBottom: "30px",
-    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-  };
-
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      style={pageStyle}
-    >
+    <div className="get-license-container">
       <Container>
         <Row className="justify-content-center">
           <Col md={8}>
-            <motion.div
-              initial={{ y: 50 }}
-              animate={{ y: 0 }}
-              transition={{ type: "spring", stiffness: 100 }}
-              style={cardStyle}
-            >
+            <div className="license-card">
               {vendorData ? (
-                <Card
-                  className="text-center"
-                  style={{ background: "transparent", border: "none" }}
-                >
+                <Card className="vendor-details-card">
                   <Card.Body>
-                    <motion.h2
-                      className="mb-4"
-                      initial={{ y: -20 }}
-                      animate={{ y: 0 }}
-                      transition={{ delay: 0.2 }}
-                    >
+                    <h2 className="vendor-details-title">
                       Vendor Details
-                    </motion.h2>
-                    <motion.p
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.3 }}
-                    >
+                    </h2>
+                    <p className="vendor-detail-text">
                       <strong>Name:</strong> {vendorData.vendorName}
-                    </motion.p>
-                    <motion.p
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.4 }}
-                    >
+                    </p>
+                    <p className="vendor-detail-text">
                       <strong>Email:</strong> {vendorData.email}
-                    </motion.p>
-                    <motion.p
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.5 }}
-                    >
+                    </p>
+                    <p className="vendor-detail-text">
                       <strong>License Number:</strong>{" "}
                       {vendorData.licenseNumber}
-                    </motion.p>
+                    </p>
                   </Card.Body>
                 </Card>
               ) : (
                 <>
-                  <motion.h2
-                    className="text-center mb-4"
-                    initial={{ y: -20 }}
-                    animate={{ y: 0 }}
-                    transition={{ delay: 0.2 }}
-                  >
+                  <h2 className="license-title">
                     Get License
-                  </motion.h2>
+                  </h2>
                   <Form onSubmit={handleSubmit}>
                     {[
                       "Vendor Name",
@@ -210,17 +159,12 @@ const GetLicence = () => {
                       "Locality",
                       "Aadhar Number",
                     ].map((field, index) => (
-                      <motion.div
-                        key={field}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 + index * 0.1 }}
-                      >
+                      <div key={field} className="form-group">
                         <Form.Group
                           className="mb-3"
                           controlId={`form${field.replace(" ", "")}`}
                         >
-                          <Form.Label>{field}</Form.Label>
+                          <Form.Label className="form-label">{field}</Form.Label>
                           <Form.Control
                             type={
                               field === "Phone Number" ||
@@ -239,27 +183,24 @@ const GetLicence = () => {
                               )
                             }
                             required
+                            className="form-control"
                           />
                         </Form.Group>
-                      </motion.div>
+                      </div>
                     ))}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.7 }}
-                    >
-                      <Button variant="light" type="submit" className="w-100">
+                    <div className="submit-group">
+                      <Button variant="light" type="submit" className="generate-button">
                         Generate License
                       </Button>
-                    </motion.div>
+                    </div>
                   </Form>
                 </>
               )}
-            </motion.div>
+            </div>
           </Col>
         </Row>
       </Container>
-    </motion.div>
+    </div>
   );
 };
 

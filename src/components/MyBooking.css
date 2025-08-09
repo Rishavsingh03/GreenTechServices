@@ -1,0 +1,188 @@
+/* My Booking Page Styles - Matching Home Page Theme */
+.my-booking-container {
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
+  padding: 2rem 0;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Booking Title */
+.booking-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.booking-title::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #28a745, #20c997);
+  border-radius: 2px;
+}
+
+/* Booking Cards */
+.booking-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f0f0f0;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+}
+
+.booking-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Card Body */
+.card-body {
+  padding: 0;
+}
+
+/* Card Title */
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e8f5e8;
+}
+
+/* Card Text */
+.card-text {
+  font-size: 1.125rem;
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.card-text strong {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+/* Vendor Heading */
+.vendor-heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #28a745;
+  text-align: center;
+  margin: 2rem 0 1rem;
+  padding: 1rem 0;
+  background: linear-gradient(135deg, #f0f9f0 0%, #e8f5e8 100%);
+  border-radius: 8px;
+}
+
+/* No Bookings Message */
+.no-bookings {
+  font-size: 1.25rem;
+  color: #666;
+  text-align: center;
+  background: white;
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f0f0f0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Row Spacing */
+.row {
+  margin: 0 -1rem;
+}
+
+.col-md-6 {
+  padding: 0 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .my-booking-container {
+    padding: 1.5rem 0;
+  }
+  
+  .booking-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .booking-card {
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+  }
+  
+  .vendor-heading {
+    font-size: 1.125rem;
+    margin: 1.5rem 0 1rem;
+  }
+  
+  .no-bookings {
+    font-size: 1.125rem;
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .my-booking-container {
+    padding: 1rem 0;
+  }
+  
+  .booking-title {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .booking-card {
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .card-title {
+    font-size: 1.125rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .card-text {
+    font-size: 0.95rem;
+  }
+  
+  .vendor-heading {
+    font-size: 1rem;
+    margin: 1.25rem 0 0.75rem;
+  }
+  
+  .no-bookings {
+    font-size: 1rem;
+    padding: 1.5rem 1rem;
+  }
+}

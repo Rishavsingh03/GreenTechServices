@@ -1,0 +1,166 @@
+.my-pickups-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #4ade80, #22c55e, #16a34a);
+  color: white;
+  padding: 50px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.pickups-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.pickups-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: white;
+  border-radius: 2px;
+}
+
+.booking-col {
+  margin-bottom: 20px;
+}
+
+.booking-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.booking-card:hover {
+  transform: translateY(-5px);
+}
+
+.booking-card .card {
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.booking-card .card:hover {
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+.booking-card .card-body {
+  padding: 1.5rem;
+}
+
+.customer-name {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #16a34a;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.booking-card .card-text {
+  font-size: 0.95rem;
+  color: #374151;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.booking-card .card-text strong {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.complete-button {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+}
+
+.complete-button:hover {
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+}
+
+.complete-button:active {
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .my-pickups-container {
+    padding: 30px 15px;
+  }
+  
+  .pickups-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .booking-card .card-body {
+    padding: 1.25rem;
+  }
+  
+  .customer-name {
+    font-size: 1.2rem;
+  }
+  
+  .complete-button {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .my-pickups-container {
+    padding: 20px 10px;
+  }
+  
+  .pickups-title {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .pickups-title::after {
+    width: 80px;
+    height: 3px;
+  }
+  
+  .booking-card .card-body {
+    padding: 1rem;
+  }
+  
+  .customer-name {
+    font-size: 1.1rem;
+  }
+  
+  .complete-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+}

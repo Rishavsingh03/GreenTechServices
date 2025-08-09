@@ -10,8 +10,8 @@ import {
   doc,
 } from "firebase/firestore";
 import { toast } from "react-toastify";
-import { motion } from "framer-motion";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import "./MyPickups.css";
 
 const Mypickups = () => {
   const { user, loading } = useSelector((state) => state.auth);
@@ -85,39 +85,12 @@ const Mypickups = () => {
     }
   };
 
-  const pageStyle = {
-    minHeight: "100vh",
-    background: "linear-gradient(135deg, #6366F1, #3B82F6, #2DD4BF)",
-    color: "white",
-    padding: "50px 20px",
-  };
-
-  const cardStyle = {
-    background: "rgba(255,255,255,0.2)",
-    backdropFilter: "blur(10px)",
-    borderRadius: "15px",
-    padding: "30px",
-    marginBottom: "30px",
-    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-  };
-
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      style={pageStyle}
-    >
+    <div className="my-pickups-container">
       <Container>
-        <motion.h2
-          className="text-center mb-4"
-          initial={{ y: -20 }}
-          animate={{ y: 0 }}
-          transition={{ delay: 0.2 }}
-          style={{ color: "white" }}
-        >
+        <h2 className="pickups-title">
           Pickups
-        </motion.h2>
+        </h2>
         <Row>
           {bookings.map((booking) => (
             <Col
@@ -125,16 +98,12 @@ const Mypickups = () => {
               xs={12}
               md={6}
               lg={4}
-              style={{ marginBottom: "20px" }}
+              className="booking-col"
             >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-              >
-                <Card style={cardStyle}>
+              <div className="booking-card">
+                <Card>
                   <Card.Body>
-                    <Card.Title className="text-center" style={{ color: "white", fontWeight: "700" }}>
+                    <Card.Title className="customer-name">
                       {booking.user.name}
                     </Card.Title>
                     <Card.Text>
@@ -151,18 +120,19 @@ const Mypickups = () => {
                       <Button
                         variant="success"
                         onClick={() => handleStatusChange(booking.id)}
+                        className="complete-button"
                       >
                         Mark as Completed
                       </Button>
                     )}
                   </Card.Body>
                 </Card>
-              </motion.div>
+              </div>
             </Col>
           ))}
         </Row>
       </Container>
-    </motion.div>
+    </div>
   );
 };
 

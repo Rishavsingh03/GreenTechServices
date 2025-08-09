@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../Redux/authActions";
 import { useNavigate } from "react-router-dom";
-import { motion } from 'framer-motion';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import "./login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -18,73 +18,90 @@ const Login = () => {
     navigate("/");
   };
 
-  const pageStyle = {
-    minHeight: '100vh',
-    background: 'linear-gradient(135deg, #6366F1, #3B82F6, #2DD4BF)',
-    color: 'white',
-    padding: '50px 20px',
-  };
-
-  const cardStyle = {
-    background: 'rgba(255,255,255,0.2)',
-    backdropFilter: 'blur(10px)',
-    borderRadius: '15px',
-    padding: '30px',
-    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+  const handleDemoLogin = (demoType) => {
+    if (demoType === "customer") {
+      setEmail("customer@demo.com");
+      setPassword("customer123");
+    } else if (demoType === "vendor") {
+      setEmail("vendor@demo.com");
+      setPassword("vendor123");
+    }
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      style={pageStyle}
-      className="d-flex justify-content-center align-items-center"
-    >
+    <div className="login-container d-flex justify-content-center align-items-center">
       <Container>
         <Row className="justify-content-center">
           <Col md={6}>
-            <motion.div
-              initial={{ y: 50 }}
-              animate={{ y: 0 }}
-              transition={{ type: 'spring', stiffness: 100 }}
-              style={cardStyle}
-            >
-              <h2 className="text-center mb-4">Login</h2>
+            <div className="login-card">
+              <h2 className="login-title">Login</h2>
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
-                  <Form.Label>Email address</Form.Label>
+                  <Form.Label className="form-label">Email address</Form.Label>
                   <Form.Control
                     type="email"
                     placeholder="Enter email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    className="form-control"
                   />
                 </Form.Group>
                 <Form.Group className="mb-4">
-                  <Form.Label>Password</Form.Label>
+                  <Form.Label className="form-label">Password</Form.Label>
                   <Form.Control
                     type="password"
                     placeholder="Enter password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    className="form-control"
                   />
                 </Form.Group>
                 {error && <div className="alert alert-danger">{error}</div>}
                 <Button
                   variant="light"
                   type="submit"
-                  className="w-100"
+                  className="login-button"
                   disabled={loading}
                 >
                   {loading ? "Logging in..." : "Submit"}
                 </Button>
               </Form>
-            </motion.div>
+              
+              {/* Demo Login Section */}
+              <div className="demo-login-section">
+                <h4 className="demo-title">Demo Login Credentials</h4>
+                <div className="demo-buttons">
+                  <Button
+                    variant="outline-success"
+                    size="sm"
+                    className="demo-btn"
+                    onClick={() => handleDemoLogin("customer")}
+                  >
+                    Customer Demo
+                  </Button>
+                  <Button
+                    variant="outline-primary"
+                    size="sm"
+                    className="demo-btn"
+                    onClick={() => handleDemoLogin("vendor")}
+                  >
+                    Vendor Demo
+                  </Button>
+                </div>
+                <div className="demo-credentials">
+                  <div className="demo-credential">
+                    <strong>Customer:</strong> customer@demo.com / customer123
+                  </div>
+                  <div className="demo-credential">
+                    <strong>Vendor:</strong> vendor@demo.com / vendor123
+                  </div>
+                </div>
+              </div>
+            </div>
           </Col>
         </Row>
       </Container>
-    </motion.div>
+    </div>
   );
 };
 

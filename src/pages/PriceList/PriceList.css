@@ -1,108 +1,127 @@
-/* General page styles */
-.price-list-page {
-    background-color: #0c1841; /* Dark blue background */
-    color: #ffffff;
-    padding: 20px;
-    font-family: 'Arial', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* Price List Page Styles - Matching Home Page Theme */
+.price-list-container {
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+  color: #1a1a1a;
+}
+
+/* Price List Title */
+.price-list-title {
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.price-list-title::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #28a745, #20c997);
+  border-radius: 2px;
+}
+
+/* Price Table */
+.price-table {
+  width: 100%;
+  max-width: 800px;
+  border-collapse: separate;
+  border-spacing: 0 15px;
+  margin-top: 1rem;
+}
+
+/* Table Header */
+.table-header {
+  padding: 1rem;
+  text-align: left;
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  font-weight: 700;
+  font-size: 1.125rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+/* Table Rows */
+.table-row {
+  transition: all 0.3s ease;
+}
+
+.table-row:hover {
+  transform: translateY(-2px);
+}
+
+/* Table Cells */
+.table-cell {
+  padding: 1rem;
+  text-align: left;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f0f0f0;
+  font-size: 1rem;
+  color: #1a1a1a;
+  transition: all 0.3s ease;
+}
+
+.table-cell:hover {
+  background: linear-gradient(135deg, #f0f9f0 0%, #e8f5e8 100%);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .price-list-container {
+    padding: 1.5rem 0;
   }
   
-  .page-heading {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #fbbf24; /* Bright yellow color */
-  }
-  
-  .price-list-table {
-    width: 80%;
-    margin-bottom: 40px;
-    border-collapse: collapse;
-    background-color: #ffffff;
-    color: #000000;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  }
-  
-  .price-list-table th, .price-list-table td {
-    padding: 12px;
-    text-align: center;
-    border-bottom: 1px solid #cccccc;
-  }
-  
-  .price-list-table th {
-    background-color: #11236b; /* Lighter blue for headers */
-    color: #ffffff;
-  }
-  
-  .price-list-table tr:hover {
-    background-color: #cad1dd; /* Light gray hover effect */
-  }
-  
-  .form-heading {
+  .price-list-title {
     font-size: 2rem;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #fbbf24;
+    margin-bottom: 1.5rem;
   }
   
-  .form-container {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    width: 80%;
-    max-width: 600px;
+  .price-table {
+    margin: 0 1rem;
+    border-spacing: 0 10px;
   }
   
-  .form-group {
-    margin-bottom: 20px;
+  .table-header,
+  .table-cell {
+    padding: 0.875rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .price-list-container {
+    padding: 1rem 0;
   }
   
-  .form-group label {
-    display: block;
-    font-size: 1.2rem;
-    margin-bottom: 8px;
-    color: #000102;
+  .price-list-title {
+    font-size: 1.75rem;
+    margin-bottom: 1.25rem;
   }
   
-  .form-input, .form-textarea, .form-select {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+  .price-table {
+    margin: 0 0.5rem;
+    border-spacing: 0 8px;
   }
   
-  .form-textarea {
-    height: 100px;
-    resize: none;
+  .table-header,
+  .table-cell {
+    padding: 0.75rem;
+    font-size: 0.9rem;
   }
-  
-  .form-submit-btn {
-    background-color: #fbbf24;
-    color: #ffffff;
-    padding: 12px 20px;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-submit-btn:hover {
-    background-color: #f59e0b;
-  }
-  
-  @media (max-width: 768px) {
-    .price-list-table, .form-container {
-      width: 100%;
-    }
-  }
+}
   
