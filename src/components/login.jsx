@@ -20,11 +20,11 @@ const Login = () => {
 
   const handleDemoLogin = (demoType) => {
     if (demoType === "customer") {
-      setEmail("customer@demo.com");
-      setPassword("customer123");
+      setEmail("test10@gmail.com");
+      setPassword("Divyam@12345");
     } else if (demoType === "vendor") {
-      setEmail("vendor@demo.com");
-      setPassword("vendor123");
+      setEmail("test11@gmail.com");
+      setPassword("Divyam@12345");
     }
   };
 
@@ -66,7 +66,7 @@ const Login = () => {
                   {loading ? "Logging in..." : "Submit"}
                 </Button>
               </Form>
-              
+
               {/* Demo Login Section */}
               <div className="demo-login-section">
                 <h4 className="demo-title">Demo Login Credentials</h4>
@@ -90,7 +90,8 @@ const Login = () => {
                 </div>
                 <div className="demo-credentials">
                   <div className="demo-credential">
-                    <strong>Customer:</strong> test10@gmail.com / Divyam@12345
+                    <strong>Customer:</strong> test10@gmail.com /
+                    Divyam@12345
                   </div>
                   <div className="demo-credential">
                     <strong>Vendor:</strong> test11@gmail.com / Divyam@12345
