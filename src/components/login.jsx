@@ -90,10 +90,10 @@ const Login = () => {
                 </div>
                 <div className="demo-credentials">
                   <div className="demo-credential">
-                    <strong>Customer:</strong> customer@gmail.com / customer@123
+                    <strong>Customer:</strong> test10@gmail.com / Divyam@12345
                   </div>
                   <div className="demo-credential">
-                    <strong>Vendor:</strong> vendor@gmail.com / vendor@123
+                    <strong>Vendor:</strong> test11@gmail.com / Divyam@12345
                   </div>
                 </div>
               </div>
